@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Javascript UI</title>
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>    
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	  <script>
+		  $( function() {
+			$( "#datepicker" ).datepicker();
+		  } );
+		  
+		    $( function() {
+			$( document ).tooltip();
+  		} );
+		  
+		$( "#age" ).selectmenu();
+		  
+  		$( function() {
+    		$(".chex" ).checkboxradio();
+  		} );
+		  
+	  </script>
+	
+	<style type="text/css">
+		form{
+			background: beige;
+		}
+	</style>
+</head>
+
+<body>
+<form id="form1" name="form1" method="post">
+	<h1>Make your appointment today</h1>
+	<p>
+		<label>Full Name:</label>
+		<input type="text" id="name">
+	</p>
+	<p>
+		<label>Telephone:</label><input id="Telephone" title="We may need this to contact you directly"></p>
+	<p>
+		<label>Email:</label>
+		<input type="email" id="email">
+	</p>
+	<p>
+	    <label for="speed">Select age</label>
+    		<select name="age" id="age">
+      			<option>16</option>
+      			<option>17</option>
+      			<option selected="selected">18</option>
+      			<option>19</option>
+      			<option>20</option>
+    		</select>
+	</p>
+	  <h2>Radio Group</h2>
+		  <fieldset>
+			<legend>Select Gender: </legend>
+			<label for="radio-1">Male</label>
+			<input type="radio" class="chex" name="radio-1" id="radio-1">
+			<label for="radio-2">Female</label>
+			<input type="radio" class="chex" name="radio-1" id="radio-2">
+			<label for="radio-3">Other</label>
+			<input type="radio" class="chex" name="radio-1" id="radio-3">
+		  </fieldset>
+	<p>Date: <input type="text" id="datepicker"></p>
+	<p>
+		<button type="submit">Submit</button>
+		<button type="reset">Clear</button>
+	</p>
+</form>
+</body>
+</html>
