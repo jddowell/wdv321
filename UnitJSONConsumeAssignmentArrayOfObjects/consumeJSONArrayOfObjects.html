@@ -1,0 +1,79 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>WDV321 Advanced Javascript - JSON</title>
+<script
+  src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+  integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="
+  crossorigin="anonymous"></script>
+
+<!--
+	The createJSONArray.js file will create a javasript Object containing an array of JSON objects. 
+    It will then convert that javascript object into a JSON object.
+    It will then store the JSON object in local storage as 'studentRecords'.
+
+    Look at the createJSONArray.js code to determine the field names needed for this assignment.
+    
+    Instructions:
+    	1. Incorporate the createJSONArray.js file into this page as an external javascript file.
+        2. Access the JSON object in local storage and convert it into a javascript object.
+        3. Use the information in the object to complete a student card for EACH student object.
+        4. Account for the fact that there could be a random number of student objects. 
+        5. Use Jquery commands whenever possible.  
+-->
+
+<style>
+	.studentCard	{
+		width:200px;
+		box-sizing:border-box;
+		background-color:lightblue;
+		padding-left:5px;
+		padding-top:3px;
+		border:thin solid blue;
+		box-shadow: 2px 2px 2px grey;		
+	}
+	
+	.studentCard h3	{
+		margin:0px;	
+	}
+</style>
+	
+<script src="createJSONArray.js"></script>
+
+</head>
+
+<body>
+	<h1>WDV321 Advanced Javascript</h1>
+    <h2>Unit-8 JSON Objects</h2>
+    <h3>Creating and consuming a JSON object</h3>
+	
+	<h4>Team Members: Q, Justin, Daniel</h4>
+
+<script>
+	var studentRecordsObj = JSON.parse(studentRecordsJSON);
+	//alert(studentRecordsJSON);
+	//alert(student1.student_courses);
+	
+	
+	$.each(studentRecordsObj.students, function(key, value){
+		//alert(value.student_id);
+		document.write("<div class='studentCard'>");
+		document.write("<h3>Student ID: " + value.student_id + "</h3>");
+		document.write("<p>Student GPA: " + value.student_gpa + "</p>");
+		document.write("<p>Student Courses:"); 
+		document.write("<ul>");
+		$.each(studentRecordsObj.students[key].student_courses, function(key, value){
+				document.write("<li>");
+				document.write(value);
+				document.write("</li>");
+		});
+		document.write("</ul>");
+		document.write("</p>");
+		document.write("</div>");
+		document.write("<br/>");
+	});
+</script>
+	
+</body>
+</html>
