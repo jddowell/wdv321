@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Untitled Document</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script>
+		var productOption = ["pens", "paper", 400];
+		
+		
+		
+		$(document).ready(function(){
+			$("#addOption3").click(function() {
+  			//add code here
+			$("[name='selectValue']").append("<option value='v3'>Value 3</option>");
+			});	
+			
+			$("#removeOption3").click(function() {
+  		//add code here
+			$("option[value='v3']").remove();
+			});
+		});
+
+
+	</script>
+</head>
+
+<body>
+	<h1>WDV 321 Advanced Javascript</h1>
+	<h2>Unit 5</h2>
+	<p>Populating a drop down list</p>
+	<p>
+		<label for="selectValue">Select A Value</label>
+<select name="selectValue">
+	<option>Select Value</option>
+  <option value="v1">Value One</option>
+  <option>Value Two</option>
+</select>
+	</p>
+<p><button id="addOption3">Input Type 3</button></p>
+<p><button id="removeOption3">Remove Option 3</button></p>
+	
+<select name="selectProduct">
+	<option>Select Product</option>
+	<option value="v1">Value 1</option>
+	<script>
+			$.each(productOption, function(key,val){
+				$("[name='selectProduct']").append(
+				$('<option></option>').val(val).html(val)
+				);
+			});
+	</script>
+</select>
+
+</body>
+</html>
