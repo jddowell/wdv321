@@ -1,0 +1,161 @@
+<!DOCTYPE html >
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>WDV321 Advanced Javascript</title>
+
+<script src="files/formatFunctions.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+
+<script>
+
+	$(document).ready(function() {
+
+	$("#depositButton").click(depositAmount);
+	$("#withdrawButton").click(withdrawAmount);
+	$("#displayBalanceButton").click(displayBalance);
+	$("#button2").click(clearAccount);
+	$("#button2").click(clearEntry);
+	$("#inAmt").focus();
+	});
+
+	var accountBalance = 0;
+
+
+	function validateValue(inValue)	{
+		//document.getElementById("amountError").innerHTML = "&nbsp;";
+		$("#amountError").html("&nbsp;");
+		//if( isNaN(inValue) || inValue.trim() == ""){
+		if(!$.isNumeric(inValue) || inValue.trim() == ""){
+			//document.getElementById("amountError").innerHTML = "Please enter a number!"
+			$("#amountError").html("Please enter a number!");
+
+			return false;
+		}
+		else {
+			return true;
+		}
+	}//end validateValue()
+
+
+	function depositAmount() {
+			//alert("inside depositAmount()");
+		//var inAmount = document.getElementById("inAmt").value;
+		var inAmount = $("#inAmt").val();
+
+		if( validateValue(inAmount) ) {
+				//alert("good amount" + inAmount);
+			inAmount = parseFloat( inAmount);
+			if(inAmount < 0){
+				//document.getElementById("amountError").innerHTML = "Deposit cannot be negative<h1></h1>";
+				$("#amountError").html("Deposit cannot be negative<h1></h1>");
+			}
+			else {
+				accountBalance += inAmount;
+				displayBalance();
+			}
+		}
+	}//end depositAmount();
+
+	function withdrawAmount() {
+			//alert("inside depositAmount()");
+		//var inAmount = document.getElementById("inAmt").value;
+		var inAmount = $("#inAmt").val();
+
+		if( validateValue(inAmount) ) {
+				//alert("good amount" + inAmount);
+			inAmount = parseFloat( inAmount);
+
+			if( inAmount > accountBalance ) {
+				//document.getElementById("amountError").innerHTML = "Cannot withdraw more than you have!";
+				$("#amountError").html("Cannot withdraw more than you have!");
+			}
+			else {
+				accountBalance -= inAmount;
+				displayBalance();
+			}
+		}
+	}//end withdrawAmount()
+
+
+	function displayBalance() {
+			//alert("inside displayBalance()");
+		//document.getElementById("displayAmt").innerHTML = currencyFormat(accountBalance);
+		$("#displayAmt").html(currencyFormat(accountBalance));
+	}//end withdrawAmount()
+
+
+	function clearEntry() {
+			//alert("inside clearEntry()");
+		document.getElementById("displayAmt").innerHTML = "";
+		document.getElementById("amountError").innerHTML = "&nbsp;";
+	}//end clearEntry()
+
+
+	function clearAccount() {
+		//	alert("inside clearAccount()");
+		document.getElementById("displayAmt").innerHTML = "";
+		document.getElementById("amountError").innerHTML = "&nbsp;";
+		accountBalance = 0;
+	}//end clearAccount
+
+	function clearInput() {
+		document.getElementById("inAmt").value = "";
+		document.getElementById("amountError").innerHTML = "&nbsp;";
+	}
+</script>
+
+<style>
+
+body {background-color:#C99;
+}
+
+fieldset {
+	width:350px;
+	margin:auto;	
+}
+
+.errMsgDisplay	{
+	color:red;	
+}
+
+h3	{
+	text-align:center;
+}
+
+
+
+</style>
+</head>
+
+<body>
+<h2>WDV321 Advanced Javascript</h2>
+
+<form id="atmForm" name="atmForm" method="post" action="">
+
+  <fieldset>
+	  <h3>Student Bank ATM</h3>
+      <p>
+        Enter an amount: 
+        <input type="text" name="inAmt" id="inAmt" onfocus="clearInput()"/>
+      </p>
+      <p class="errMsgDisplay" id="amountError">&nbsp;</p>
+
+      <p>
+        <input type="button" name="button3" id="depositButton" value="Deposit"/>
+        <input type="button" name="button4" id="withdrawButton" value="Withdraw"/>
+        <input type="button" name="button5" id="displayBalanceButton" value="Display Balance"/>
+      </p>
+      <p>Your Balance:<span id="displayAmt"></span></p>
+      <p>
+        <input type="reset" name="button2" id="button2" value="Clear Entry"/>
+        <input type="reset" name="button2" id="button2" value="Clear Account"/>        
+      </p>
+  </fieldset>
+</form>
+<p>&nbsp;</p>
+<h2>Instructions:</h2>
+<p>Convert this Javascript application to use Jquery as much as possible.</p>
+</body>
+</html>
