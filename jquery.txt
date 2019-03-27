@@ -1,0 +1,31 @@
+line 16 $("#amountError").html("&nbsp;");
+
+line 17 isNaN(inValue) =  !$.isNumeric(inValue)
+
+line 18 $("#amountError").html("Please enter a number!");
+
+line 29 $("#inAmt").val();
+
+line 35 $("#amountError").html("Deposit cannot be negative<h1></h1>);
+
+line 65 $("#displayAmt").html(currencyFormat(accountBalance));
+
+	$(document).ready(function(){
+		$("#depositButton").click(depositAmount)
+	});
+	
+	$(document).ready(function(){
+		$("#withdrawButton").click(withdrawAmount)
+	});
+	
+	$(document).ready(function(){
+		$("#displayBalanceButton").click(displayBalance)
+	});
+	
+	$(document).ready(function(){
+		$("#button2").click(clearEntry)
+	});
+	
+	$(document).ready(function(){
+		$("#button2").click(clearAccount)
+	});
